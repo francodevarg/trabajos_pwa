@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS 3</title>
+</head>
+<body>
+    <div id="app">
+        <p>Nombre: {{ nombre }}</p>
+        <p> Edad: {{edad}} </p>
+        <p> Ciudad: {{ciudad}}</p>
+        Hola, mi nombre es {{nombre}}, tengo {{edad}} años y vivo en {{ciudad}}.
+        <button @click="incrementarEdad">
+            Aumentar edad
+        </button>
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    nombre: "Ana García",
+                    edad: 30,
+                    ciudad: "Tupungato",
+                    contador: 0
+                }
+            },
+            methods: {
+                incrementarEdad() {
+                    this.edad++;
+                }
+            },
+            computed:{
+            }
+        }).mount('#app');        
+    </script>
+</body>
+</html>
