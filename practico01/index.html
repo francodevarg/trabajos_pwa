@@ -26,6 +26,27 @@
               <button @click="decrementar">Decrementar</button>
             </div>
         </div>
+
+        <!-- Paso 4 -->
+        <div class="step">
+            <h2>Paso #4 – Lista de Tareas con Conteo y Estado</h2>
+            <div class="tareas">
+            <input type="text" v-model="nuevaTarea" placeholder="Nueva tarea..." />
+            <button @click="agregarTarea">Añadir Tarea</button>
+    
+            <ul>
+                <li v-for="tarea in tareas" :key="tarea.id">
+                    <input type="checkbox" v-model="tarea.completada" />
+                    <span :style="{ textDecoration: tarea.completada ? 'line-through' : 'none' }">
+                        {{ tarea.texto }}
+                    </span>
+                </li>
+            </ul>
+    
+            <p><strong>Total de Tareas:</strong> {{ totalTareas }}</p>
+            <p><strong>Tareas Pendientes:</strong> {{ tareasPendientes }}</p>
+            </div>
+        </div>
     </div>
 
     
@@ -38,7 +59,12 @@
                     nombre: "Ana García",
                     edad: 30,
                     ciudad: "Tupungato",
-                    contador: 0
+                    contador: 0,
+                    nuevaTarea: "",
+                    tareas: [
+                        { id: 1, texto: "Aprender Vue", completada: false },
+                        { id: 2, texto: "Configurar repositorio", completada: true }
+                    ]
                 }
             },
             methods: {
@@ -47,9 +73,25 @@
                 },
                 decrementar() {
                     this.contador--;
+                },
+                agregarTarea() {
+                    if (this.nuevaTarea.trim() !== "") {
+                        this.tareas.push({
+                            id: Date.now(),
+                            texto: this.nuevaTarea,
+                            completada: false
+                        });
+                        this.nuevaTarea = "";
+                    }
                 }
             },
             computed:{
+                totalTareas() {
+                    return this.tareas.length;
+                },
+                tareasPendientes() {
+                    return this.tareas.filter(t => !t.completada).length;
+                }
             }
         }).mount('#app');        
     </script>
