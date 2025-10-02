@@ -7,13 +7,11 @@
 </head>
 <body>
     <div id="app">
+        <!-- Paso #2-->
         <p>Nombre: {{ nombre }}</p>
         <p> Edad: {{edad}} </p>
         <p> Ciudad: {{ciudad}}</p>
         Hola, mi nombre es {{nombre}}, tengo {{edad}} años y vivo en {{ciudad}}.
-        <button @click="incrementarEdad">
-            Aumentar edad
-        </button>
     </div>
 
     
@@ -26,13 +24,9 @@
                     nombre: "Ana García",
                     edad: 30,
                     ciudad: "Tupungato",
-                    contador: 0
                 }
             },
             methods: {
-                incrementarEdad() {
-                    this.edad++;
-                }
             },
             computed:{
             }
