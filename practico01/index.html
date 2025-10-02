@@ -8,10 +8,24 @@
 <body>
     <div id="app">
         <!-- Paso #2-->
-        <p>Nombre: {{ nombre }}</p>
-        <p> Edad: {{edad}} </p>
-        <p> Ciudad: {{ciudad}}</p>
-        Hola, mi nombre es {{nombre}}, tengo {{edad}} años y vivo en {{ciudad}}.
+        <div class="step">
+            <h2>Paso #2 – Información de Perfil Simple
+                (Interpolación)</h2>
+            <p>Nombre: {{ nombre }}</p>
+            <p> Edad: {{edad}} </p>
+            <p> Ciudad: {{ciudad}}</p>
+            Hola, mi nombre es {{nombre}}, tengo {{edad}} años y vivo en {{ciudad}}.
+        </div>
+        <hr/>
+        <!-- Paso #3-->
+        <div class="step">
+            <h2>Paso #3 – Contador Interactivo (Interpolación y Eventos)</h2>
+            <p>Contador: {{ contador }}</p>
+            <div class="counter-buttons">
+              <button @click="aumentar">Aumentar</button>
+              <button @click="decrementar">Decrementar</button>
+            </div>
+        </div>
     </div>
 
     
@@ -24,9 +38,16 @@
                     nombre: "Ana García",
                     edad: 30,
                     ciudad: "Tupungato",
+                    contador: 0
                 }
             },
             methods: {
+                aumentar() {
+                    this.contador++;
+                },
+                decrementar() {
+                    this.contador--;
+                }
             },
             computed:{
             }
